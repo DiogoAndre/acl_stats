@@ -1,20 +1,19 @@
-.. image:: https://travis-ci.org/DiogoAndre/acl_stats.svg?branch=master
-    :target: https://travis-ci.org/DiogoAndre/acl_stats
-=========
-ACL Stats
-=========
+
+[![Build Status](https://travis-ci.org/DiogoAndre/acl_stats.svg?branch=master)](https://travis-ci.org/DiogoAndre/acl_stats)
+[![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/DiogoAndre/acl_stats)
+
+# ACL Stats
 
 **Quickly gather access-lists stats from Cisco ASA Firewalls**
 
 ACL Stats is a tool to help extract basic info from access-list on the 
 Cisco ASA Firewall, and output the information in a structured way.
 
-.. image:: sample_csv.png
+![Sample script run with output in csv](sample_csv.png)
 
-The script currently collects the number of hits for each acl entry and the date of the last hit. [1]_
+The script currently collects the number of hits for each acl entry and the date of the last hit.
 
-Usage
---------
+## Usage
 
 First, install it via pip::
 
@@ -26,14 +25,14 @@ Use it as a command line tool. You can get contextual help in the cli::
 
 There are two main modes to pass the access-lists to the script.
 
-Directly from a Device
-~~~~~~~~~~~~~~~~~~~~~~
+### Directly from a Device
 
 the script can connect to a device in the network and gather the informatoin needed. 
 The connection is made via HTTPS (same transport as ASDM), hence the fireall will need to have that method enabled.
 
 Run ``acl_stats device --help`` to get the contextual help listing all the available parameters::
 
+```shell
         $ acl_stats device --help                                                                                                                                                                                                                                                    02:35:23
         ACL Stats
         Usage: acl_stats device [OPTIONS]
@@ -49,15 +48,17 @@ Run ``acl_stats device --help`` to get the contextual help listing all the avail
         --output TEXT    Choose an output format: json, csv. Defaults to csv
         --write-to TEXT  Write the output to a file
         --help           Show this message and exit.
+```
 
 Here's an example::
 
+```shell
         acl_stats device --hostname 192.168.218.72 --port 443 --username cisco --password cisco --acl-name inside_in --output json
+```
 
 If you ommit the ``--write-to`` parameter, the output will be sent to ``stdout``(the terminal, usually).
 
-From static files
-~~~~~~~~~~~~~~~~~
+## From static files
 
 You can also run the script 'off-line', using previously extracted command outputs.
 The script process one access-list at a time for now. Here are the two commands you need to save in **separete** files::
@@ -65,8 +66,9 @@ The script process one access-list at a time for now. Here are the two commands 
         show acess-list _name_of_acl
         show access-list _name_of_acl brief
 
-Run ``acl_stats static --help`` to get the contextual help listing all the available parameters::
+Run ``acl_stats static --help`` to get the contextual help listing all the available parameters:
 
+```shell
         $ acl_stats static --help                                                                                                                                                                                                                                                    02:47:19
         ACL Stats
         Usage: acl_stats static [OPTIONS]
@@ -81,17 +83,19 @@ Run ``acl_stats static --help`` to get the contextual help listing all the avail
         --output TEXT     Choose an output format: json, csv. Defaults to csv
         --write-to TEXT   Write the output to a file
         --help            Show this message and exit.
+```
 
-Here's an example::
+Here's an example:
 
+```shell
         acl_stats static --acl-file acl.log --acl-brief acl_brief.log --output json --write-to acl-inside_in.csv
+```
 
+## Example Outputs
 
-Example Outputs
----------------
+JSON Output
 
-JSON Output::
-
+```json
         $ acl_stats acl_stats device --hostname 192.168.218.72 --port 443 --username cisco --password cisco --acl-name inside_in --output json                                                                                                                                                 02:47:23
         ACL Stats
         Using Device 192.168.218.72
@@ -141,9 +145,11 @@ JSON Output::
         ]
         Lines processed (acls + brief): 5
         Total execution time: 0.09016704559326172s.
+```
 
-CSV output::
+CSV output:
 
+```csv
         $ acl_stats acl_stats device --hostname 192.168.218.72 --port 443 --username cisco --password cisco --acl-name inside_in --output csv                                                                                                                                                  02:57:21
         ACL Stats
         Using Device 192.168.218.72
@@ -161,4 +167,4 @@ CSV output::
 
         Lines processed (acls + brief): 5
         Total execution time: 0.08188796043395996s.
-
+```
