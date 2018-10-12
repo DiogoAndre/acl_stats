@@ -18,7 +18,7 @@ deploy:
   on:
     tags: true
     branch: master
-    repo: diogoandre/acl_stats
+    repo: DiogoAndre/acl_stats
     python: 3.6
 script:
 - tox
