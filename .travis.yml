@@ -1,24 +1,24 @@
-# Config file for automatic testing at travis-ci.org
-
+notifications:
+  email:
+    on_success: change
+    on_failure: change
+sudo: false
 language: python
 python:
-  - 3.6
-  - 3.5
-  - 3.4
-
-# Command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
-install: pip install -U tox-travis
-
-# Command to run tests, e.g. python setup.py test
-script: tox
-
+- 3.4
+- 3.5
+- 3.6
+install:
+- pip install -U tox-travis
 deploy:
   provider: pypi
-  distributions: sdist bdist_wheel
   user: ddaa
   password:
-    secure: "gSHA94r3GKwPDZ14EQ5WjiFsvEuf+dd7rQyHRgxLeFNhj7ZNfslbO22jhDroc4jkQeCUKjMHnt6IP+yzg98ohq9DVy0K8iCsFefMbHvyznCkpGIlp94CSOBWH/W4P1YieysoGKBdFcr/jVI5/eiKXvR43j05BP/okp5mV3wk1BaflVo7bfB9GHsZfKiOwvZlR8p17UXK5tyWSl9WiY8fIag7qsT8FKI+HjOSCNm02Pvys8pkL8RCPVZDWEUpOmXAd2sx+FiZZbyaz0g2UBTGzmtIm5ONg3SbOGnFb8yOySVuBE3bx0S0kEiTWzJcDBkNoYNvLTWt+aNq77KkX4cLg/nEnix+MS/M8BUXNp6uCFTCN2DnAgR6bwALnoOvfbGI6YYz6oSAqhTC+Cu8KoeAImROho7guPICkH8vbp1QK6vXe6kHtQQI+wQQjlE1sKyXJtCNt/TTTx7P55oigpX2B1hCPjgeHQJoHtkufPN6wfNgaVYwULa96DNbaIXejlipYOY3mkRI4vYKrSpC6a7A91e1ftRe8SbzgW3eDCcNL+b4uxhfCJ4YgDlqySdHnwmjCLLx9BrH8CxYxjpV9As9vnZIR9p6IZgpcQXhxTF0+cr6DIPfJKeyssBpGqmtBMny0Nxz54fzgLSsEd972H+HEfL17gC62ktmUouWfcvDBTY="EPLACE_ME
+    secure: "Jt1K3/vc/VPl1WVlkU7aGZByd6Nk8XhB3W/mOeBOB6JdozGbTaTyZPiKz9xiL7juWesNFMhvZQ8u0eT1fkCK9+/IsnB77jSgSYbGW0UFDHIFciLwuus8J+AZvo9iozM8+nCl6wfh+TBK1Gl8vsSpfrV1lysP/45Fml38aHCeSOFcaRkI+mxZskppANNowGzL7VqnbWIKRohZfOT0yUgt2BToOucDORsiEdtL/jvPZaj2WmIaAoPKn+xF35aLQ45TN5gjjg6UuN80F9SBZl08Di6uNvlKE04T+7UC/EW00ZwBqV5utBRmFi91+IJXcJMwTHl70NezP57d8rChJMc4X1LGGW4/r2f31OMK9w9FCn6KRzMNvp5EmxO/vOobde1a3mg3Agpxn1JdNpnmcyETI099XaHlxhbgL+a6sMejKEqS+9y9gLvS6I5KmJgawJ7KSampPZchyt/4v/XWZfeNJOT0Sb34bED+nNcW1V1nUaEB0/erDEqfTzN7nIJWdElKZmGCq/kkkluwiQTu0dWd0Ec2fn2DKAmYBp7lVVH7dljtd/cV56KbqEe+oeyM60WZOff+ZKwV+dMhCGsf1LX6Sqb8fG7xUA/gZNrn2wiDVDUGdtSLUDTYVCAn8MecujVdNjw8mGed55o3px8Hp+uTKRkCSWQg8FGA+yhKEZ21cGM="
   on:
     tags: true
+    branch: master
     repo: diogoandre/acl_stats
     python: 3.6
+script:
+- tox
