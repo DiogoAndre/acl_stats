@@ -1,0 +1,24 @@
+# Config file for automatic testing at travis-ci.org
+
+language: python
+python:
+  - 3.6
+  - 3.5
+  - 3.4
+
+# Command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
+install: pip install -U tox-travis
+
+# Command to run tests, e.g. python setup.py test
+script: tox
+
+deploy:
+  provider: pypi
+  distributions: sdist bdist_wheel
+  user: ddaa
+  password:
+    secure: "gSHA94r3GKwPDZ14EQ5WjiFsvEuf+dd7rQyHRgxLeFNhj7ZNfslbO22jhDroc4jkQeCUKjMHnt6IP+yzg98ohq9DVy0K8iCsFefMbHvyznCkpGIlp94CSOBWH/W4P1YieysoGKBdFcr/jVI5/eiKXvR43j05BP/okp5mV3wk1BaflVo7bfB9GHsZfKiOwvZlR8p17UXK5tyWSl9WiY8fIag7qsT8FKI+HjOSCNm02Pvys8pkL8RCPVZDWEUpOmXAd2sx+FiZZbyaz0g2UBTGzmtIm5ONg3SbOGnFb8yOySVuBE3bx0S0kEiTWzJcDBkNoYNvLTWt+aNq77KkX4cLg/nEnix+MS/M8BUXNp6uCFTCN2DnAgR6bwALnoOvfbGI6YYz6oSAqhTC+Cu8KoeAImROho7guPICkH8vbp1QK6vXe6kHtQQI+wQQjlE1sKyXJtCNt/TTTx7P55oigpX2B1hCPjgeHQJoHtkufPN6wfNgaVYwULa96DNbaIXejlipYOY3mkRI4vYKrSpC6a7A91e1ftRe8SbzgW3eDCcNL+b4uxhfCJ4YgDlqySdHnwmjCLLx9BrH8CxYxjpV9As9vnZIR9p6IZgpcQXhxTF0+cr6DIPfJKeyssBpGqmtBMny0Nxz54fzgLSsEd972H+HEfL17gC62ktmUouWfcvDBTY="EPLACE_ME
+  on:
+    tags: true
+    repo: diogoandre/acl_stats
+    python: 3.6
