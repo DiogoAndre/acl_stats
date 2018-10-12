@@ -1,3 +1,5 @@
+.. image:: https://travis-ci.org/DiogoAndre/acl_stats.svg?branch=master
+    :target: https://travis-ci.org/DiogoAndre/acl_stats
 =========
 ACL Stats
 =========
