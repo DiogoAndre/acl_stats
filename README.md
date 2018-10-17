@@ -6,7 +6,7 @@
 
 **Quickly gather access-lists stats from Cisco ASA Firewalls**
 
-ACL Stats is a tool to help extract basic info from access-list on the 
+ACL Stats is a tool to help extract basic info from access-list from a
 Cisco ASA Firewall, and output the information in a structured way.
 
 ![Sample script run with output in csv](sample_csv.png)
@@ -19,7 +19,7 @@ First, install it via pip::
 
         pip install acl_stats
 
-Use it as a command line tool. You can get contextual help in the cli::
+Use it as a command line tool. You can get contextual help in the cli:
 
         acl_stats --help
 
@@ -27,10 +27,10 @@ There are two main modes to pass the access-lists to the script.
 
 ### Directly from a Device
 
-the script can connect to a device in the network and gather the informatoin needed. 
-The connection is made via HTTPS (same transport as ASDM), hence the fireall will need to have that method enabled.
+The script can connect to a device in the network and gather the informatoin needed. 
+A connection is made via HTTPS (same transport as ASDM), hence the firewall will need to have that method enabled.
 
-Run ``acl_stats device --help`` to get the contextual help listing all the available parameters::
+Run ``acl_stats device --help`` to get the contextual help listing all the available parameters:
 
 ```shell
         $ acl_stats device --help                                                                                                                                                                                                                                                    02:35:23
@@ -50,7 +50,7 @@ Run ``acl_stats device --help`` to get the contextual help listing all the avail
         --help           Show this message and exit.
 ```
 
-Here's an example::
+Here's an example:
 
 ```shell
         acl_stats device --hostname 192.168.218.72 --port 443 --username cisco --password cisco --acl-name inside_in --output json
@@ -61,7 +61,7 @@ If you ommit the ``--write-to`` parameter, the output will be sent to ``stdout``
 ## From static files
 
 You can also run the script 'off-line', using previously extracted command outputs.
-The script process one access-list at a time for now. Here are the two commands you need to save in **separete** files::
+The script processes one access-list at a time for now. Here are the two commands you need to save in **separete** files:
 
         show acess-list _name_of_acl
         show access-list _name_of_acl brief
