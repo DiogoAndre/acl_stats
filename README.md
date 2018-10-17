@@ -15,7 +15,7 @@ The script currently collects the number of hits for each acl entry and the date
 
 ## Usage
 
-First, install it via pip::
+First, install it via pip:
 
         pip install acl_stats
 
